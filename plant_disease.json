@@ -1,196 +1,352 @@
 [
     {
         "name": "Apple___Apple_scab",
+        "plant": "Apple",
+        "disease": "Apple Scab",
+        "emoji": "🍎",
+        "severity": "medium",
         "cause": "Fungus Venturia inaequalis. Favorable conditions are cool, wet weather.",
         "cure": "Use fungicides and resistant apple varieties. Prune and destroy infected leaves."
     },
     {
         "name": "Apple___Black_rot",
+        "plant": "Apple",
+        "disease": "Black Rot",
+        "emoji": "🍎",
+        "severity": "high",
         "cause": "Caused by the fungus Botryosphaeria obtusa.",
         "cure": "Prune and remove infected areas. Apply fungicides during the growing season."
     },
     {
         "name": "Apple___Cedar_apple_rust",
+        "plant": "Apple",
+        "disease": "Cedar Apple Rust",
+        "emoji": "🍎",
+        "severity": "medium",
         "cause": "Fungus Gymnosporangium juniperi-virginianae. Requires junipers as an alternate host.",
         "cure": "Remove nearby juniper hosts. Use resistant varieties and fungicides."
     },
     {
         "name": "Apple___healthy",
+        "plant": "Apple",
+        "disease": "Healthy",
+        "emoji": "🍎",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Background_without_leaves",
+        "plant": "Background",
+        "disease": "No Leaves Detected",
+        "emoji": "🌿",
+        "severity": "none",
         "cause": "No disease or plant detected.",
         "cure": "Not applicable."
     },
     {
         "name": "Blueberry___healthy",
+        "plant": "Blueberry",
+        "disease": "Healthy",
+        "emoji": "🫐",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Cherry___Powdery_mildew",
+        "plant": "Cherry",
+        "disease": "Powdery Mildew",
+        "emoji": "🍒",
+        "severity": "medium",
         "cause": "Fungus Podosphaera clandestina.",
         "cure": "Apply sulfur-based or fungicide treatments. Ensure good air circulation."
     },
     {
         "name": "Cherry___healthy",
+        "plant": "Cherry",
+        "disease": "Healthy",
+        "emoji": "🍒",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Corn___Cercospora_leaf_spot Gray_leaf_spot",
+        "plant": "Corn",
+        "disease": "Cercospora Leaf Spot (Gray Leaf Spot)",
+        "emoji": "🌽",
+        "severity": "high",
         "cause": "Fungus Cercospora zeae-maydis.",
         "cure": "Use resistant hybrids and fungicide sprays."
     },
     {
         "name": "Corn___Common_rust",
+        "plant": "Corn",
+        "disease": "Common Rust",
+        "emoji": "🌽",
+        "severity": "medium",
         "cause": "Fungus Puccinia sorghi.",
         "cure": "Apply fungicides and plant resistant varieties."
     },
     {
         "name": "Corn___Northern_Leaf_Blight",
+        "plant": "Corn",
+        "disease": "Northern Leaf Blight",
+        "emoji": "🌽",
+        "severity": "high",
         "cause": "Fungus Exserohilum turcicum.",
         "cure": "Use resistant varieties and fungicides."
     },
     {
         "name": "Corn___healthy",
+        "plant": "Corn",
+        "disease": "Healthy",
+        "emoji": "🌽",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Grape___Black_rot",
+        "plant": "Grape",
+        "disease": "Black Rot",
+        "emoji": "🍇",
+        "severity": "high",
         "cause": "Fungus Guignardia bidwellii.",
         "cure": "Prune infected areas and apply fungicides."
     },
     {
         "name": "Grape___Esca_(Black_Measles)",
+        "plant": "Grape",
+        "disease": "Esca (Black Measles)",
+        "emoji": "🍇",
+        "severity": "high",
         "cause": "Fungal complex including Phaeomoniella chlamydospora.",
         "cure": "Remove infected wood. Avoid injuries to vines."
     },
     {
         "name": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+        "plant": "Grape",
+        "disease": "Leaf Blight (Isariopsis Leaf Spot)",
+        "emoji": "🍇",
+        "severity": "medium",
         "cause": "Fungus Pseudocercospora vitis.",
         "cure": "Apply fungicides and manage vineyard hygiene."
     },
     {
         "name": "Grape___healthy",
+        "plant": "Grape",
+        "disease": "Healthy",
+        "emoji": "🍇",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Orange___Haunglongbing_(Citrus_greening)",
+        "plant": "Orange",
+        "disease": "Huanglongbing (Citrus Greening)",
+        "emoji": "🍊",
+        "severity": "high",
         "cause": "Bacterium Candidatus Liberibacter spp. Spread by psyllid insects.",
         "cure": "Control psyllid population and remove infected trees."
     },
     {
         "name": "Peach___Bacterial_spot",
+        "plant": "Peach",
+        "disease": "Bacterial Spot",
+        "emoji": "🍑",
+        "severity": "medium",
         "cause": "Bacterium Xanthomonas campestris pv. pruni.",
         "cure": "Use resistant varieties and copper-based bactericides."
     },
     {
         "name": "Peach___healthy",
+        "plant": "Peach",
+        "disease": "Healthy",
+        "emoji": "🍑",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Pepper,_bell___Bacterial_spot",
+        "plant": "Bell Pepper",
+        "disease": "Bacterial Spot",
+        "emoji": "🫑",
+        "severity": "medium",
         "cause": "Bacterium Xanthomonas campestris pv. vesicatoria.",
         "cure": "Use copper-based bactericides and resistant varieties."
     },
     {
         "name": "Pepper,_bell___healthy",
+        "plant": "Bell Pepper",
+        "disease": "Healthy",
+        "emoji": "🫑",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Potato___Early_blight",
+        "plant": "Potato",
+        "disease": "Early Blight",
+        "emoji": "🥔",
+        "severity": "medium",
         "cause": "Fungus Alternaria solani.",
         "cure": "Apply fungicides and practice crop rotation."
     },
     {
         "name": "Potato___Late_blight",
+        "plant": "Potato",
+        "disease": "Late Blight",
+        "emoji": "🥔",
+        "severity": "high",
         "cause": "Pathogen Phytophthora infestans.",
         "cure": "Use resistant varieties and fungicides."
     },
     {
         "name": "Potato___healthy",
+        "plant": "Potato",
+        "disease": "Healthy",
+        "emoji": "🥔",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Raspberry___healthy",
+        "plant": "Raspberry",
+        "disease": "Healthy",
+        "emoji": "🫐",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Soybean___healthy",
+        "plant": "Soybean",
+        "disease": "Healthy",
+        "emoji": "🫘",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Squash___Powdery_mildew",
+        "plant": "Squash",
+        "disease": "Powdery Mildew",
+        "emoji": "🎃",
+        "severity": "medium",
         "cause": "Fungal pathogens including Erysiphe cichoracearum.",
         "cure": "Apply sulfur-based fungicides and maintain good air circulation."
     },
     {
         "name": "Strawberry___Leaf_scorch",
+        "plant": "Strawberry",
+        "disease": "Leaf Scorch",
+        "emoji": "🍓",
+        "severity": "medium",
         "cause": "Fungus Diplocarpon earlianum.",
         "cure": "Remove infected leaves and apply fungicides."
     },
     {
         "name": "Strawberry___healthy",
+        "plant": "Strawberry",
+        "disease": "Healthy",
+        "emoji": "🍓",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     },
     {
         "name": "Tomato___Bacterial_spot",
+        "plant": "Tomato",
+        "disease": "Bacterial Spot",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Bacterium Xanthomonas spp.",
         "cure": "Apply copper-based bactericides and practice crop rotation."
     },
     {
         "name": "Tomato___Early_blight",
+        "plant": "Tomato",
+        "disease": "Early Blight",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Fungus Alternaria solani.",
         "cure": "Apply fungicides and remove infected leaves."
     },
     {
         "name": "Tomato___Late_blight",
+        "plant": "Tomato",
+        "disease": "Late Blight",
+        "emoji": "🍅",
+        "severity": "high",
         "cause": "Pathogen Phytophthora infestans.",
         "cure": "Use resistant varieties and fungicides."
     },
     {
         "name": "Tomato___Leaf_Mold",
+        "plant": "Tomato",
+        "disease": "Leaf Mold",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Fungus Passalora fulva.",
         "cure": "Apply fungicides and ensure good ventilation."
     },
     {
         "name": "Tomato___Septoria_leaf_spot",
+        "plant": "Tomato",
+        "disease": "Septoria Leaf Spot",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Fungus Septoria lycopersici.",
         "cure": "Remove infected leaves and apply fungicides."
     },
     {
         "name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "plant": "Tomato",
+        "disease": "Spider Mites (Two-Spotted Spider Mite)",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Spider mites Tetranychus urticae.",
         "cure": "Use miticides or insecticidal soaps."
     },
     {
         "name": "Tomato___Target_Spot",
+        "plant": "Tomato",
+        "disease": "Target Spot",
+        "emoji": "🍅",
+        "severity": "medium",
         "cause": "Fungus Corynespora cassiicola.",
         "cure": "Apply fungicides and ensure good air circulation."
     },
     {
         "name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "plant": "Tomato",
+        "disease": "Yellow Leaf Curl Virus",
+        "emoji": "🍅",
+        "severity": "high",
         "cause": "Virus spread by whiteflies.",
         "cure": "Control whitefly population and use resistant varieties."
     },
     {
         "name": "Tomato___Tomato_mosaic_virus",
+        "plant": "Tomato",
+        "disease": "Mosaic Virus",
+        "emoji": "🍅",
+        "severity": "high",
         "cause": "Virus transmitted through contact and contaminated tools.",
         "cure": "Remove infected plants and sterilize tools."
     },
     {
         "name": "Tomato___healthy",
+        "plant": "Tomato",
+        "disease": "Healthy",
+        "emoji": "🍅",
+        "severity": "none",
         "cause": "No disease present.",
         "cure": "Maintain good cultural practices for optimal health."
     }

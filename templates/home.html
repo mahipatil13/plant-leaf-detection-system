@@ -1,92 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Disease Recognition</title>
-    <link rel="icon" href="../static/images/logo.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlantGuard AI — Intelligent Plant Disease Recognition</title>
+  <meta name="description"
+    content="Upload a photo of a plant leaf and get instant AI-powered disease diagnosis with treatment recommendations. Supports 38+ plant diseases.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="../static/images/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            PHASAL
-          </a>
-          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-          </div> -->
+
+  <!-- ═══ SLIDING BACKGROUND SLIDESHOW ═══ -->
+  <div class="bg-scene" id="bgScene">
+    <!-- Slideshow images -->
+    <div class="bg-slideshow" id="bgSlideshow">
+      <div class="bg-slide active" style="background-image: url('{{ url_for('static', filename='images/slide_plant_ai.png') }}')"></div>
+      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_healthy_leaves.png') }}')"></div>
+      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_farmland.png') }}')"></div>
+      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_leaf_macro.png') }}')"></div>
+      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_greenhouse.png') }}')"></div>
+      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_disease_leaf.png') }}')"></div>
+    </div>
+
+    <!-- Overlay layers -->
+    <div class="bg-overlay-gradient"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-vignette"></div>
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Slide indicators -->
+    <div class="slide-indicators" id="slideIndicators">
+      <button class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
+      <button class="slide-dot" data-slide="3" aria-label="Slide 4"></button>
+      <button class="slide-dot" data-slide="4" aria-label="Slide 5"></button>
+      <button class="slide-dot" data-slide="5" aria-label="Slide 6"></button>
+    </div>
+
+    <!-- Slide progress bar -->
+    <div class="slide-progress" id="slideProgress">
+      <div class="slide-progress-bar" id="slideProgressBar"></div>
+    </div>
+  </div>
+
+  <!-- ═══ LOADING OVERLAY ═══ -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Analyzing specimen<span class="loading-dots"></span></div>
+  </div>
+
+  <!-- ═══ TOAST ═══ -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <a class="nav-brand" href="/">
+      <div class="nav-logo">🌿</div>
+      <div class="nav-brand-text">Plant<span>Guard</span></div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#scanner">Scan</a></li>
+      <li><a href="#library">Library</a></li>
+      <li><a href="#stats">About</a></li>
+    </ul>
+
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      AI Model Online
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE CONTENT ═══ -->
+  <main class="page-content">
+
+    <!-- ── HERO SECTION ── -->
+    <section class="hero" id="hero">
+      <div class="hero-badge">
+        <span>AI-Powered Botanical Intelligence</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="gradient-text">Detect Plant Diseases</span><br>
+        <span class="highlight">Instantly</span> with AI
+      </h1>
+
+      <p class="hero-subtitle">
+        Upload a photo of a plant leaf to receive automated diagnostic evaluations,
+        pathogen identification, and expert-recommended treatments — all in seconds.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#scanner" class="btn btn-primary btn-lg">🔬 Start Scanning</a>
+        <a href="#how-it-works" class="btn btn-ghost btn-lg">How It Works</a>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="section" id="how-it-works">
+      <div class="section-header reveal">
+        <div class="section-badge">How It Works</div>
+        <h2 class="section-title">Three Simple Steps</h2>
+        <p class="section-subtitle">From photo to diagnosis in seconds — our AI handles the complexity.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">01</div>
+          <span class="step-icon">📸</span>
+          <h3 class="step-title">Upload Photo</h3>
+          <p class="step-desc">Take a clear photo of the affected leaf and upload it to our secure scanner.</p>
         </div>
-      </nav>
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner " >
-            <div class="carousel-item active">
-              <div class="carousel-text-wrapper">
-                <h1 class="carousel-text-title">Plant Disease Recognition</h1>
-                <div class="form-box">
-                  <form action="/upload/" method = "POST" enctype="multipart/form-data">
-                    <h1>Upload Image</h1>
-                    <div class="input-box d-flex">
-                      <input type="file"  accept="image/png, image/jpeg"  name="img" required>
-                    </div>
-                    <div class="input-box d-flex">
-                      <button type="submit" class="btn btn-success m-auto">Upload</button>
-                    </div>
-                  </form>
-                  {% if result %}
-                  <div class="result-container">
-                    <div class="result-box">
-                      <div class="result-img-container">
-                        <!-- <img src="../static/images/Apple_tree_leaf.jpg" alt="uploaded image" class="result-image"> -->
-                        <img src="{{imagepath}}" alt="uploaded image" class="result-image">
-                      </div>
-                      <div class="result-text">
-                        <h3>                   
-                          {{prediction['name']}}
-                        </h3>
-                        <p>
-                          {{prediction['cause']}}
-                        </p>
-                        <p>
-                          {{prediction['cure']}}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %}
-                </div>
-                
-                
-                <!-- <div class="m-auto text-center">
-                  <h1>फसल karo Hustle नहीं</h1>
-                  <h3 class="hero-subhead">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</h3>
-                </div> -->
-              </div>
-              
-            </div>
-           
+
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">02</div>
+          <span class="step-icon">🧠</span>
+          <h3 class="step-title">AI Analysis</h3>
+          <p class="step-desc">Our deep learning model analyzes cellular patterns to identify diseases accurately.</p>
         </div>
-       
+
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">03</div>
+          <span class="step-icon">💊</span>
+          <h3 class="step-title">Get Treatment</h3>
+          <p class="step-desc">Receive detailed diagnosis with causes and actionable treatment recommendations.</p>
         </div>
       </div>
-      <script src="../static/js/bootstrap.bundle.min.js"></script>
+    </section>
+
+    <!-- ── SCANNER SECTION ── -->
+    <section class="scanner-section" id="scanner">
+      <div class="section-header reveal">
+        <div class="section-badge">Specimen Scanner</div>
+        <h2 class="section-title">Analyze Your Plant</h2>
+        <p class="section-subtitle">Upload or drag a leaf photo below to begin AI-powered diagnosis.</p>
+      </div>
+
+      <div class="scanner-wrapper reveal">
+        <div class="glass-card">
+          <div class="card-header-label">// Diagnostic Terminal</div>
+          <div class="card-title">🌿 Upload Specimen</div>
+
+          <form id="uploadForm" action="/upload/" method="POST" enctype="multipart/form-data">
+            <div class="drop-zone" id="dropZone">
+              <input type="file" name="img" id="fileInput" accept="image/png,image/jpeg,image/webp" required>
+              <div class="scan-line"></div>
+              <div class="drop-icon">🍃</div>
+              <div class="drop-text">
+                <strong>Select Specimen Photo</strong> or drag and drop here<br>
+                <small>PNG, JPG or WEBP &nbsp;·&nbsp; max 10 MB</small>
+              </div>
+              <!-- Image preview inside drop zone -->
+              <div class="image-preview-wrap" id="imagePreviewWrap">
+                <img id="imagePreview" src="" alt="Preview">
+              </div>
+              <div class="file-name-preview" id="fileNamePreview"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="analyzeBtn">
+              🔬 Analyze Specimen
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESULTS (AJAX — dynamically populated by JS) ── -->
+    <section class="results-section" id="resultsSection"></section>
+
+    <!-- ── RESULTS (SERVER-RENDERED fallback via Jinja2) ── -->
+    {% if result %}
+    <section class="results-section visible" id="serverResults" style="display:block;">
+      <div class="glass-card">
+        <div class="result-card">
+          <!-- Image -->
+          <div class="result-image-wrap">
+            <img src="{{ imagepath }}" alt="Analyzed specimen">
+            <div class="crosshair ch-tl"></div>
+            <div class="crosshair ch-tr"></div>
+            <div class="crosshair ch-bl"></div>
+            <div class="crosshair ch-br"></div>
+          </div>
+
+          <!-- Info -->
+          <div class="result-info">
+            <div class="result-status-badge {{ 'healthy' if prediction.get('severity', '') == 'none' else 'diseased' }}">
+              {{ '✅ Healthy Plant' if prediction.get('severity', '') == 'none' else '⚠️ Disease Detected' }}
+            </div>
+
+            <div class="result-plant-name">{{ prediction.get('emoji', '🌿') }} {{ prediction.get('plant', '') }}</div>
+            <div class="result-disease-name">{{ prediction.get('disease', prediction['name']) }}</div>
+
+            <!-- Confidence Gauge -->
+            <div class="confidence-wrap">
+              <div class="confidence-gauge">
+                <svg viewBox="0 0 56 56">
+                  <circle class="gauge-bg" cx="28" cy="28" r="26" />
+                  <circle class="gauge-fill" cx="28" cy="28" r="26"
+                    data-target-offset="{{ 163 - (163 * confidence / 100) }}"
+                    style="stroke-dashoffset: 163" />
+                </svg>
+                <div class="confidence-value">{{ confidence }}%</div>
+              </div>
+              <div class="confidence-label">
+                <strong>AI Confidence</strong>
+                Neural network prediction certainty
+              </div>
+            </div>
+
+            <!-- Severity -->
+            {% if prediction.get('severity', 'none') != 'none' %}
+            <div class="severity-badge {{ prediction['severity'] }}">
+              {% if prediction['severity'] == 'high' %}🔴{% elif prediction['severity'] == 'medium' %}🟠{% else %}🟡{% endif %}
+              Severity: {{ prediction['severity']|capitalize }}
+            </div>
+            {% endif %}
+
+            <!-- Tabs -->
+            <div class="result-tabs" style="margin-top: 24px;">
+              <button class="tab-btn active" data-tab="overview">Overview</button>
+              <button class="tab-btn" data-tab="cause">🔬 Cause</button>
+              <button class="tab-btn" data-tab="cure">💊 Treatment</button>
+            </div>
+
+            <div class="tab-content active" id="server-tab-overview">
+              <div class="result-block-label">Identified Pathology</div>
+              <div class="result-block-text">
+                {% if prediction.get('severity', '') == 'none' %}
+                This {{ prediction.get('plant', 'plant') }} specimen appears healthy with no signs of disease. Continue
+                maintaining good agricultural practices.
+                {% else %}
+                AI analysis has identified <strong>{{ prediction.get('disease', prediction['name']) }}</strong> on this
+                {{ prediction.get('plant', 'plant') }} specimen with {{ confidence }}% confidence. Review cause and
+                treatment below.
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="tab-content" id="server-tab-cause">
+              <div class="result-block-label">Pathogen & Environmental Causes</div>
+              <div class="result-block-text">{{ prediction['cause'] }}</div>
+            </div>
+
+            <div class="tab-content" id="server-tab-cure">
+              <div class="cure-card">
+                <div class="result-block-label">Recommended Treatment</div>
+                <div class="result-block-text">{{ prediction['cure'] }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ── STATS ── -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid reveal">
+        <div class="stat-item">
+          <div class="stat-value" data-count="38" data-suffix="+">0</div>
+          <div class="stat-label">Species & Diseases</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value" data-count="95" data-suffix="%">0</div>
+          <div class="stat-label">Model Accuracy</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">&lt;2s</div>
+          <div class="stat-label">Analysis Speed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DISEASE LIBRARY ── -->
+    <section class="library-section" id="library">
+      <div class="section-header reveal">
+        <div class="section-badge">Disease Library</div>
+        <h2 class="section-title">Supported Diseases</h2>
+        <p class="section-subtitle">Browse all 38 plant diseases and conditions our AI can identify.</p>
+      </div>
+
+      <div class="library-search-wrap reveal">
+        <span class="library-search-icon">🔍</span>
+        <input type="text" class="library-search" id="librarySearch"
+          placeholder="Search by plant name or disease...">
+      </div>
+
+      <div class="library-grid">
+        {% for disease in diseases %}
+        <div class="disease-card reveal">
+          <div class="disease-card-header">
+            <div class="disease-emoji">{{ disease.get('emoji', '🌿') }}</div>
+            <div>
+              <div class="disease-card-title">{{ disease.get('disease', disease['name']) }}</div>
+              <div class="disease-card-plant">{{ disease.get('plant', '') }}</div>
+            </div>
+          </div>
+          <div class="disease-card-body">
+            {{ disease['cause'] }}
+          </div>
+          {% if disease.get('severity', 'none') != 'none' %}
+          <div class="severity-badge {{ disease['severity'] }}" style="margin-top: 12px;">
+            {% if disease['severity'] == 'high' %}🔴{% elif disease['severity'] == 'medium' %}🟠{% else %}🟡{% endif %}
+            {{ disease['severity']|capitalize }}
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    Built with 🌱 by <span>PlantGuard AI</span> &nbsp;·&nbsp; Powered by TensorFlow &amp; Keras
+    &nbsp;·&nbsp; &copy; 2025
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══ -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </body>
+
 </html>
