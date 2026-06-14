@@ -55,3 +55,10 @@ To use this project, you need to download a pre-trained model from the given Goo
 
 3. **Access the Application**
    - Once the server is running, follow the instructions displayed in the terminal to access the application in your web browser.
+
+## updates
+  
+1. **ui ux design**
+   - sliding background slideshow 
+   - toast 
+   - loading overlay    
