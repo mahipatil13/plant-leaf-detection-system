@@ -18,12 +18,18 @@
   <div class="bg-scene" id="bgScene">
     <!-- Slideshow images -->
     <div class="bg-slideshow" id="bgSlideshow">
-      <div class="bg-slide active" style="background-image: url('{{ url_for('static', filename='images/slide_plant_ai.png') }}')"></div>
-      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_healthy_leaves.png') }}')"></div>
-      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_farmland.png') }}')"></div>
-      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_leaf_macro.png') }}')"></div>
-      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_greenhouse.png') }}')"></div>
-      <div class="bg-slide" style="background-image: url('{{ url_for('static', filename='images/slide_disease_leaf.png') }}')"></div>
+      <div class="bg-slide active"
+        style='background-image: url("{{ url_for("static", filename="images/slide_plant_ai.png") }}")'></div>
+      <div class="bg-slide"
+        style='background-image: url("{{ url_for("static", filename="images/slide_healthy_leaves.png") }}")'></div>
+      <div class="bg-slide"
+        style='background-image: url("{{ url_for("static", filename="images/slide_farmland.png") }}")'></div>
+      <div class="bg-slide"
+        style='background-image: url("{{ url_for("static", filename="images/slide_leaf_macro.png") }}")'></div>
+      <div class="bg-slide"
+        style='background-image: url("{{ url_for("static", filename="images/slide_greenhouse.png") }}")'></div>
+      <div class="bg-slide"
+        style='background-image: url("{{ url_for("static", filename="images/slide_disease_leaf.png") }}")'></div>
     </div>
 
     <!-- Overlay layers -->
@@ -192,7 +198,8 @@
 
           <!-- Info -->
           <div class="result-info">
-            <div class="result-status-badge {{ 'healthy' if prediction.get('severity', '') == 'none' else 'diseased' }}">
+            <div
+              class="result-status-badge {{ 'healthy' if prediction.get('severity', '') == 'none' else 'diseased' }}">
               {{ '✅ Healthy Plant' if prediction.get('severity', '') == 'none' else '⚠️ Disease Detected' }}
             </div>
 
@@ -205,8 +212,7 @@
                 <svg viewBox="0 0 56 56">
                   <circle class="gauge-bg" cx="28" cy="28" r="26" />
                   <circle class="gauge-fill" cx="28" cy="28" r="26"
-                    data-target-offset="{{ 163 - (163 * confidence / 100) }}"
-                    style="stroke-dashoffset: 163" />
+                    data-target-offset="{{ 163 - (163 * confidence / 100) }}" style="stroke-dashoffset: 163" />
                 </svg>
                 <div class="confidence-value">{{ confidence }}%</div>
               </div>
@@ -219,7 +225,8 @@
             <!-- Severity -->
             {% if prediction.get('severity', 'none') != 'none' %}
             <div class="severity-badge {{ prediction['severity'] }}">
-              {% if prediction['severity'] == 'high' %}🔴{% elif prediction['severity'] == 'medium' %}🟠{% else %}🟡{% endif %}
+              {% if prediction['severity'] == 'high' %}🔴{% elif prediction['severity'] == 'medium' %}🟠{% else %}🟡{%
+              endif %}
               Severity: {{ prediction['severity']|capitalize }}
             </div>
             {% endif %}
@@ -292,8 +299,7 @@
 
       <div class="library-search-wrap reveal">
         <span class="library-search-icon">🔍</span>
-        <input type="text" class="library-search" id="librarySearch"
-          placeholder="Search by plant name or disease...">
+        <input type="text" class="library-search" id="librarySearch" placeholder="Search by plant name or disease...">
       </div>
 
       <div class="library-grid">
