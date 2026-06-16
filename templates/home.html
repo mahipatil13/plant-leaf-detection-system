@@ -61,7 +61,7 @@
   </div>
 
   <!-- ═══ TOAST ═══ -->
-  <div class="toast" id="toast"></div>
+  <!-- <div class="toast" id="toast"></div> -->
 
   <!-- ═══ NAVBAR ═══ -->
   <nav class="navbar" id="navbar">
@@ -73,8 +73,9 @@
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#hero">Home</a></li>
       <li><a href="#scanner">Scan</a></li>
+      <li><a href="#features">Features</a></li>
       <li><a href="#library">Library</a></li>
       <li><a href="#stats">About</a></li>
     </ul>
@@ -95,13 +96,13 @@
       </div>
 
       <h1 class="hero-title">
-        <span class="gradient-text">Detect Plant Diseases</span><br>
-        <span class="highlight">Instantly</span> with AI
+        <span class="gradient-text">Plant Disease Detection</span><br>
+        <span class="highlight">Straight from a leaf photo</span>
       </h1>
 
       <p class="hero-subtitle">
-        Upload a photo of a plant leaf to receive automated diagnostic evaluations,
-        pathogen identification, and expert-recommended treatments — all in seconds.
+        This project uses deep learning to help farmers, gardeners, and researchers instantly identify plant diseases
+        by simply uploading a leaf image — no lab, no expert required. Get a diagnosis in under 2 seconds.
       </p>
 
       <div class="hero-cta-group">
@@ -114,7 +115,7 @@
     <section class="section" id="how-it-works">
       <div class="section-header reveal">
         <div class="section-badge">How It Works</div>
-        <h2 class="section-title">Three Simple Steps</h2>
+        <h2 class="section-title">Four Simple Steps</h2>
         <p class="section-subtitle">From photo to diagnosis in seconds — our AI handles the complexity.</p>
       </div>
 
@@ -122,22 +123,69 @@
         <div class="step-card reveal reveal-delay-1">
           <div class="step-number">01</div>
           <span class="step-icon">📸</span>
-          <h3 class="step-title">Upload Photo</h3>
-          <p class="step-desc">Take a clear photo of the affected leaf and upload it to our secure scanner.</p>
+          <h3 class="step-title">Upload a leaf image</h3>
+          <p class="step-desc">Take a clear photo of the affected leaf and upload it.</p>
         </div>
 
         <div class="step-card reveal reveal-delay-2">
           <div class="step-number">02</div>
           <span class="step-icon">🧠</span>
-          <h3 class="step-title">AI Analysis</h3>
-          <p class="step-desc">Our deep learning model analyzes cellular patterns to identify diseases accurately.</p>
+          <h3 class="step-title">AI analyzes it</h3>
+          <p class="step-desc">The model processes the image and extracts visual disease patterns.</p>
         </div>
 
         <div class="step-card reveal reveal-delay-3">
           <div class="step-number">03</div>
-          <span class="step-icon">💊</span>
-          <h3 class="step-title">Get Treatment</h3>
-          <p class="step-desc">Receive detailed diagnosis with causes and actionable treatment recommendations.</p>
+          <span class="step-icon">📋</span>
+          <h3 class="step-title">Get the diagnosis</h3>
+          <p class="step-desc">Receive the disease name, confidence score, and health status.</p>
+        </div>
+
+        <div class="step-card reveal reveal-delay-4">
+          <div class="step-number">04</div>
+          <span class="step-icon">🌱</span>
+          <h3 class="step-title">Take action</h3>
+          <p class="step-desc">Use the result to treat, monitor, or report the crop condition.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURES SECTION ── -->
+    <section class="section" id="features">
+      <div class="section-header reveal">
+        <div class="section-badge">Key Features</div>
+        <h2 class="section-title">Powerful Botanical AI</h2>
+        <p class="section-subtitle">Equipped with state-of-the-art deep learning models to deliver precision
+          diagnostics.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">🧠</div>
+          <h3 class="feature-title">Deep Learning Model</h3>
+          <p class="feature-desc">Trained on thousands of annotated leaf images across 38 disease and species classes
+            using a CNN-based architecture.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">📸</div>
+          <h3 class="feature-title">Image-Based Diagnosis</h3>
+          <p class="feature-desc">Upload a photo of a leaf and the model instantly predicts the disease status —
+            healthy, infected, or stressed.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">📊</div>
+          <h3 class="feature-title">Confidence Scoring</h3>
+          <p class="feature-desc">Each prediction comes with a confidence score so you know how reliable the result is
+            before taking action.</p>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon">🌾</div>
+          <h3 class="feature-title">Multiple Crop Support</h3>
+          <p class="feature-desc">Covers a wide range of crops including tomatoes, potatoes, corn, grapes, peppers,
+            and more.</p>
         </div>
       </div>
     </section>
@@ -152,7 +200,7 @@
 
       <div class="scanner-wrapper reveal">
         <div class="glass-card">
-          <div class="card-header-label">// Diagnostic Terminal</div>
+          <!-- <div class="card-header-label">// Diagnostic Terminal</div> -->
           <div class="card-title">🌿 Upload Specimen</div>
 
           <form id="uploadForm" action="/upload/" method="POST" enctype="multipart/form-data">
@@ -207,7 +255,7 @@
             <div class="result-disease-name">{{ prediction.get('disease', prediction['name']) }}</div>
 
             <!-- Confidence Gauge -->
-            <div class="confidence-wrap">
+            <!-- <div class="confidence-wrap">
               <div class="confidence-gauge">
                 <svg viewBox="0 0 56 56">
                   <circle class="gauge-bg" cx="28" cy="28" r="26" />
@@ -220,74 +268,63 @@
                 <strong>AI Confidence</strong>
                 Neural network prediction certainty
               </div>
-            </div>
+            </div> -->
 
             <!-- Severity -->
-            {% if prediction.get('severity', 'none') != 'none' %}
-            <div class="severity-badge {{ prediction['severity'] }}">
-              {% if prediction['severity'] == 'high' %}🔴{% elif prediction['severity'] == 'medium' %}🟠{% else %}🟡{%
-              endif %}
-              Severity: {{ prediction['severity']|capitalize }}
-            </div>
-            {% endif %}
-
-            <!-- Tabs -->
-            <div class="result-tabs" style="margin-top: 24px;">
-              <button class="tab-btn active" data-tab="overview">Overview</button>
-              <button class="tab-btn" data-tab="cause">🔬 Cause</button>
-              <button class="tab-btn" data-tab="cure">💊 Treatment</button>
-            </div>
-
-            <div class="tab-content active" id="server-tab-overview">
-              <div class="result-block-label">Identified Pathology</div>
-              <div class="result-block-text">
-                {% if prediction.get('severity', '') == 'none' %}
-                This {{ prediction.get('plant', 'plant') }} specimen appears healthy with no signs of disease. Continue
-                maintaining good agricultural practices.
-                {% else %}
-                AI analysis has identified <strong>{{ prediction.get('disease', prediction['name']) }}</strong> on this
-                {{ prediction.get('plant', 'plant') }} specimen with {{ confidence }}% confidence. Review cause and
-                treatment below.
-                {% endif %}
+            <div class="result-severity">
+              {% if prediction.get('severity', 'none') != 'none' %}
+              <div style="text-align: center; width: 100%;">
+                <div class="severity-badge {{ prediction['severity'] }}">
+                  {% if prediction['severity'] == 'high' %}🔴{% elif prediction['severity'] == 'medium' %}🟠{% else
+                  %}🟡{%
+                  endif %}
+                  Severity: {{ prediction['severity']|capitalize }}
+                </div>
               </div>
-            </div>
+              {% endif %}
 
-            <div class="tab-content" id="server-tab-cause">
-              <div class="result-block-label">Pathogen & Environmental Causes</div>
-              <div class="result-block-text">{{ prediction['cause'] }}</div>
-            </div>
+              <!-- Tabs -->
+              <div class="result-tabs" style="margin-top: 24px;">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="cause">🔬 Cause</button>
+                <button class="tab-btn" data-tab="cure">💊 Treatment</button>
+              </div>
 
-            <div class="tab-content" id="server-tab-cure">
-              <div class="cure-card">
-                <div class="result-block-label">Recommended Treatment</div>
-                <div class="result-block-text">{{ prediction['cure'] }}</div>
+              <div class="tab-content active" id="server-tab-overview">
+                <div class="result-block-label">Identified Pathology</div>
+                <div class="result-block-text">
+                  {% if prediction.get('severity', '') == 'none' %}
+                  This {{ prediction.get('plant', 'plant') }} specimen appears healthy with no signs of disease.
+                  Continue
+                  maintaining good agricultural practices.
+                  {% else %}
+                  AI analysis has identified <strong>{{ prediction.get('disease', prediction['name']) }}</strong> on
+                  this
+                  {{ prediction.get('plant', 'plant') }} specimen with {{ confidence }}% confidence. Review cause and
+                  treatment below.
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="tab-content" id="server-tab-cause">
+                <div class="result-block-label">Pathogen & Environmental Causes</div>
+                <div class="result-block-text">{{ prediction['cause'] }}</div>
+              </div>
+
+              <div class="tab-content" id="server-tab-cure">
+                <div class="cure-card">
+                  <div class="result-block-label">Recommended Treatment</div>
+                  <div class="result-block-text">{{ prediction['cure'] }}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
     {% endif %}
+    </div>
 
-    <!-- ── STATS ── -->
-    <section class="stats-section" id="stats">
-      <div class="stats-grid reveal">
-        <div class="stat-item">
-          <div class="stat-value" data-count="38" data-suffix="+">0</div>
-          <div class="stat-label">Species & Diseases</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-value" data-count="95" data-suffix="%">0</div>
-          <div class="stat-label">Model Accuracy</div>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <div class="stat-value">&lt;2s</div>
-          <div class="stat-label">Analysis Speed</div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- ── DISEASE LIBRARY ── -->
     <section class="library-section" id="library">
@@ -317,7 +354,8 @@
           </div>
           {% if disease.get('severity', 'none') != 'none' %}
           <div class="severity-badge {{ disease['severity'] }}" style="margin-top: 12px;">
-            {% if disease['severity'] == 'high' %}🔴{% elif disease['severity'] == 'medium' %}🟠{% else %}🟡{% endif %}
+            {% if disease['severity'] == 'high' %}🔴{% elif disease['severity'] == 'medium' %}🟠{% else %}🟡{% endif
+            %}
             {{ disease['severity']|capitalize }}
           </div>
           {% endif %}
@@ -326,13 +364,39 @@
       </div>
     </section>
 
+    <!-- ── STATS ── -->
+    <section class="stats-section" id="stats">
+      <div class="stats-grid reveal">
+        <div class="stats-header"></div>
+        <div class="stat-item">
+          <div class="stat-value" data-count="38" data-suffix="+">0</div>
+          <div class="stat-label">Species & Diseases</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value" data-count="95" data-suffix="%">0</div>
+          <div class="stat-label">Model Accuracy</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value" data-count="54" data-suffix="k+">0</div>
+          <div class="stat-label">Dataset Images</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">&lt;2s</div>
+          <div class="stat-label">Analysis Speed</div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ═══ FOOTER ═══ -->
-  <footer class="site-footer">
+  <!-- <footer class="site-footer">
     Built with 🌱 by <span>PlantGuard AI</span> &nbsp;·&nbsp; Powered by TensorFlow &amp; Keras
     &nbsp;·&nbsp; &copy; 2025
-  </footer>
+  </footer> -->
 
   <!-- ═══ SCRIPTS ═══ -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>

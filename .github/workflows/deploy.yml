@@ -1,0 +1,26 @@
+name: Deploy to Elastic Beanstalk
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        aws-region: us-east-1
+    
+    - name: Deploy to Elastic Beanstalk
+      uses: aws-actions/aws-elasticbeanstalk-deploy@v1
+      with:
+        application-name: your-flask-app
+        environment-name: your-flask-app-env
+        version-label: ${{ github.sha }}
+        region: us-east-1
